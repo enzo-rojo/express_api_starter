@@ -1,19 +1,8 @@
 const express = require('express');
-const { InternalServerError, ForbiddenError } = require('../helpers/errors');
-const router = express.Router();
+const testController = require('../controllers/test_controller');
 
-router.get('/', async (request, response, next) => {
-	const result = [];
+const testRouter = express.Router();
 
-	try {
-		if (result.length > 0) {
-			response.status(200).json(result);
-		} else {
-			throw new ForbiddenError();
-		}
-	} catch (error) {
-		next(error);
-	}
-});
+testRouter.get('/get', testController.getAll);
 
-module.exports = router;
+module.exports = testRouter;
