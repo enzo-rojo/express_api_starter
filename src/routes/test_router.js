@@ -1,5 +1,6 @@
 const express = require('express');
 const exampleErrors = require('../helpers/errorMessages/example');
+const { InternalServerError, ForbiddenError } = require('../helpers/errors');
 const router = express.Router();
 
 router.get('/', async (request, response, next) => {
@@ -9,13 +10,10 @@ router.get('/', async (request, response, next) => {
 		if (result.length > 0) {
 			response.status(200).json(result);
 		} else {
-			throw new Error('notFound');
+			throw new ForbiddenError();
 		}
 	} catch (error) {
-		next({
-			statusCode: exampleErrors[error.message]?.status,
-			message: exampleErrors[error.message]?.errorMessage,
-		});
+		next(error);
 	}
 });
 
