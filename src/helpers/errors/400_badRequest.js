@@ -7,13 +7,12 @@ module.exports = class BadRequestError extends Error {
 		if (Error.captureStackTrace) {
 			Error.captureStackTrace(this, BadRequestError);
 		}
-		// const { message, description } = error;
 
 		this.name = `BadRequestError`;
 		this.status = BAD_REQUEST;
-		this.message = error?.message
-			? error.message
-			: 'Your browser sent a request that this server could not understand.';
-		this.description = error?.description;
+		this.message = error?.message ? error.message : 'Your request is invalid';
+		this.description = error?.description
+			? error.description
+			: 'Please check the request parameters';
 	}
 };
