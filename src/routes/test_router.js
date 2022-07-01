@@ -1,5 +1,4 @@
 const express = require('express');
-const exampleErrors = require('../helpers/errorMessages/example');
 const { InternalServerError, ForbiddenError } = require('../helpers/errors');
 const router = express.Router();
 
