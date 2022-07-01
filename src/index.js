@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const server = require('./server');
 
-const port = process.env.PORT || 8080;
+const port = process.env.APP_PORT || 8080;
 const env = process.env.NODE_ENV || 'development';
 
 server.listen(port, async () => {
