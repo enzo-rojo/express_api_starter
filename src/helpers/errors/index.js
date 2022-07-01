@@ -4,7 +4,7 @@ const ForbiddenError = require('./403_forbidden');
 const NotFoundError = require('./404_notFound');
 const InternalServerError = require('./500_internalServerError');
 
-export {
+module.exports = {
 	BadRequestError,
 	UnauthorizedError,
 	ForbiddenError,
