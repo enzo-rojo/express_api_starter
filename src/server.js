@@ -4,6 +4,7 @@ const cors = require('cors');
 const logger = require('morgan');
 const errorHandler = require('./middleware/errorHandler');
 const notFoundHandler = require('./middleware/notFound_handler');
+const SequelizeErrorHandler = require('./middleware/sequelizeError_handler');
 const routes = require('./routes');
 
 app.use(logger('dev'));
@@ -14,6 +15,7 @@ app.use('/', cors());
 app.use('/', routes);
 
 app.use('*', notFoundHandler);
+app.use(SequelizeErrorHandler);
 app.use(errorHandler);
 
 module.exports = app;
